@@ -60,6 +60,7 @@ export default {
       today: '',
       moveDay: 0,
       todaysDate: '',
+      currentDateFull: null,
       todaysTasks: [],
       todaysTasksDone: 0,
       todayMessage: `Today is`,
@@ -71,6 +72,7 @@ export default {
     this.todaysDate = `${this.checkIfZero(date.getDate())} - ${this.checkIfZero(date.getMonth())} - ${date.getFullYear()}`
     this.setTasksList()
     this.getWeekDay(date.getDay())
+    this.currentDateFull = date
   },
   methods:{
     setTasksList(){
@@ -132,13 +134,14 @@ export default {
       let previousDate = new Date()
       let currentDate = new Date(previousDate)
       currentDate.setDate(previousDate.getDate() + this.moveDay)
+      this.currentDateFull = currentDate
       this.todaysDate = `${this.checkIfZero(currentDate.getDate())} - ${this.checkIfZero(currentDate.getMonth())} - ${currentDate.getFullYear()}`
       this.setTasksList()
       this.getWeekDay(currentDate.getDay())
       
     },
     addTask(){
-      let date = new Date ()
+      let date = this.currentDateFull
       if(!this.input) return
       this.$store.commit('addTask', {task: this.input, date: date.toString(), done: false, important: false})
       this.todaysTasks.push({task: this.input, date: date.toString(), done: false, important: false})
