@@ -8,7 +8,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'planyourday',
+    title: 'Plan Your Week',
     htmlAttrs: {
       lang: 'en'
     },
@@ -16,10 +16,15 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Plan Your Week is simple application where You can make a list of things you need to do. Select one day of the week and add task.'
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/calendar.png' }
     ]
   },
 
